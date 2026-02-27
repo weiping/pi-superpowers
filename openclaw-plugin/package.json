@@ -17,5 +17,13 @@
   },
   "devDependencies": {
     "typescript": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/weiping/pi-superpowers.git"
+  },
+  "homepage": "https://github.com/weiping/pi-superpowers#readme",
+  "bugs": {
+    "url": "https://github.com/weiping/pi-superpowers/issues"
   }
 }
