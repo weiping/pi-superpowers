@@ -1,8 +1,6 @@
-# Brainstorming TODO
+# OpenClaw Plugin 实现进度
 
-- [x] 1. Explore project context — check files, docs, recent commits
-- [ ] 2. Ask clarifying questions — one at a time
-- [ ] 3. Propose 2-3 approaches — with trade-offs and recommendation
-- [ ] 4. Present design — get user approval per section
-- [ ] 5. Write design doc — save to docs/plans/YYYY-MM-DD-<topic>-design.md and commit
-- [ ] 6. Transition to implementation — invoke writing-plans skill
+- [x] Task 1: 搭建目录结构
+- [x] Task 2: 创建插件声明和 Bootstrap 钩子
+- [x] Task 3: 验证 skills 复制脚本
+- [x] Task 4: 编写 README 并发布
