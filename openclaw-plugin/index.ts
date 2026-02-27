@@ -11,7 +11,7 @@ type BeforeAgentStartResult = {
 
 type PluginApi = {
   on(
-    hookName: "before_agent_start" | "before_prompt_build",
+    hookName: "before_prompt_build",
     handler: (
       event: BeforeAgentStartEvent,
       ctx?: unknown,
