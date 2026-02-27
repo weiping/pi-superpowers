@@ -303,6 +303,16 @@ pi install -l /path/to/pi-superpowers
 
 ---
 
+### OpenClaw 安装
+
+如果你使用 [OpenClaw](https://openclaw.ai)：
+
+```bash
+openclaw plugins install @weiping/openclaw-superpowers
+```
+
+---
+
 ## 许可证
 
 MIT。  
