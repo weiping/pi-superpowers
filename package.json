@@ -1,0 +1,24 @@
+{
+  "name": "pi-superpowers",
+  "version": "1.0.0",
+  "description": "Superpowers skills library for Pi: TDD, debugging, collaboration workflows with Chinese trigger support",
+  "keywords": ["pi-package", "skills", "tdd", "debugging", "workflow", "chinese"],
+  "author": "Ported from obra/superpowers",
+  "license": "MIT",
+  "type": "module",
+  "pi": {
+    "extensions": ["./extensions/bootstrap.ts", "./extensions/subagent.ts"],
+    "skills": ["./skills"],
+    "prompts": ["./prompts"]
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "vitest": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*"
+  }
+}
