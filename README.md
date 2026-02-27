@@ -253,43 +253,50 @@ AI 在本次响应中遵循 using-superpowers 规则
 
 ## 安装
 
-### 方式一：提示词自动安装（推荐）
+### 方式一：npm 安装（推荐）
 
-在 Pi 会话中粘贴以下提示词，Pi 将自动完成克隆和注册：
+```bash
+# 全局安装（所有项目可用）
+pi install npm:@weiping/pi-superpowers
 
-**在线安装（从 GitHub）：**
-
-```
-Fetch and follow the installation instructions from https://raw.githubusercontent.com/weiping/pi-superpowers/main/.pi/INSTALL.md
-```
-
-**离线安装（使用本地副本）：**
-
-```
-Read and follow the installation instructions in /Users/liuweiping/repos/pi-superpowers/.pi/INSTALL.md
+# 项目级安装（仅当前项目，可提交给团队共享）
+pi install -l npm:@weiping/pi-superpowers
 ```
 
-**极速内联提示（单行命令版）：**
-
-```
-Clone https://github.com/weiping/pi-superpowers to ~/.pi/packages/pi-superpowers with depth 1, run pi install ~/.pi/packages/pi-superpowers, then tell me the install is complete and I need to restart Pi.
-```
-
-粘贴任意一行后，Pi 会自动执行 `git clone` + `pi install` + 验证，并提示重启。
+安装后**重启 Pi** 使更改生效。
 
 ---
 
-### 方式二：命令行安装
+### 方式二：Git 安装
 
 ```bash
-# 本地路径（直接引用，不复制）
-pi install /Users/liuweiping/repos/pi-superpowers
-
-# 从 Git 安装
+# 从 GitHub 安装最新版
 pi install https://github.com/weiping/pi-superpowers
 
-# 项目级安装（仅当前项目，可提交给团队共享）
-pi install -l /Users/liuweiping/repos/pi-superpowers
+# 锁定到指定版本（pi update 不会自动升级）
+pi install https://github.com/weiping/pi-superpowers@v1.0.0
+```
+
+---
+
+### 方式三：提示词自动安装
+
+在 Pi 会话中粘贴以下提示词，Pi 将自动完成安装：
+
+```
+Run: pi install npm:@weiping/pi-superpowers, then tell me the install is complete and I need to restart Pi.
+```
+
+---
+
+### 方式四：本地路径安装
+
+```bash
+# 全局安装
+pi install /path/to/pi-superpowers
+
+# 项目级安装
+pi install -l /path/to/pi-superpowers
 ```
 
 详见 [INSTALL.md](INSTALL.md)。

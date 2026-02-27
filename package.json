@@ -1,5 +1,5 @@
 {
-  "name": "pi-superpowers",
+  "name": "@weiping/pi-superpowers",
   "version": "1.0.0",
   "description": "Superpowers skills library for Pi: TDD, debugging, collaboration workflows with Chinese trigger support",
   "keywords": ["pi-package", "skills", "tdd", "debugging", "workflow", "chinese"],

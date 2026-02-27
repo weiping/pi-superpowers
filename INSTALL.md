@@ -8,10 +8,11 @@
 
 - [先决条件](#先决条件)
 - [安装方式](#安装方式)
-  - [方式 A：提示词自动安装（推荐）](#方式-a提示词自动安装推荐)
-  - [方式 B：本地路径安装](#方式-b本地路径安装)
-  - [方式 C：Git 仓库安装](#方式-cgit-仓库安装)
-  - [方式 D：临时加载（不写入配置）](#方式-d临时加载不写入配置)
+  - [方式 A：npm 安装（推荐）](#方式-anpm-安装推荐)
+  - [方式 B：Git 仓库安装](#方式-bgit-仓库安装)
+  - [方式 C：提示词自动安装](#方式-c提示词自动安装)
+  - [方式 D：本地路径安装](#方式-d本地路径安装)
+  - [方式 E：临时加载（不写入配置）](#方式-e临时加载不写入配置)
 - [全局安装 vs 项目级安装](#全局安装-vs-项目级安装)
 - [安装验证](#安装验证)
 - [选择性加载配置](#选择性加载配置)
@@ -46,55 +47,28 @@
 
 ## 安装方式
 
-### 方式 A：提示词自动安装（推荐）
+### 方式 A：npm 安装（推荐）
 
-在已启动的 Pi 会话中粘贴以下任意一行提示词，Pi 会自动完成 **环境检查 → 克隆仓库 → 注册包 → 验证** 全流程，并在完成后提示你重启：
-
-#### 在线安装（从 GitHub 克隆）
-
-```
-Fetch and follow the installation instructions from https://raw.githubusercontent.com/weiping/pi-superpowers/main/.pi/INSTALL.md
-```
-
-Pi 会用 `curl`/`bash` 工具获取 `.pi/INSTALL.md` 中的指令，然后逐步执行。
-
-#### 离线安装（使用本地已有副本）
-
-```
-Read and follow the installation instructions in /Users/liuweiping/repos/pi-superpowers/.pi/INSTALL.md
-```
-
-#### 极速内联提示（无需网络，无需 INSTALL.md 文件）
-
-```
-Clone https://github.com/weiping/pi-superpowers to ~/.pi/packages/pi-superpowers with depth 1, run pi install ~/.pi/packages/pi-superpowers, then tell me the install is complete and I need to restart Pi.
-```
-
-> 💡 **原理**：Pi 的 AI 会将提示词翻译为 `bash` 工具调用，依次执行 `git clone` 和 `pi install`，与 superpowers 在 OpenCode/Codex 上的一键安装机制完全一致。
-
-安装完成后**重启 Pi**（退出并重启）使更改生效。
-
----
-
-### 方式 B：本地路径安装
-
-将本机目录中的 pi-superpowers 注册到 Pi 配置（适合开发或已有本地副本）：
+pi-superpowers 已发布到 npm，直接用 `pi install` 一行搞定：
 
 ```bash
 # 全局安装（所有项目可用）
-pi install /Users/liuweiping/repos/pi-superpowers
+pi install npm:@weiping/pi-superpowers
 
-# 或项目级安装（仅当前项目生效，写入 .pi/settings.json）
-pi install -l /Users/liuweiping/repos/pi-superpowers
+# 项目级安装（仅当前项目，写入 .pi/settings.json，可提交团队共享）
+pi install -l npm:@weiping/pi-superpowers
+
+# 锁定到指定版本（pi update 不会自动升级）
+pi install npm:@weiping/pi-superpowers@1.0.0
 ```
 
-> ⚠️ 本地路径安装是**引用而非复制**。移动或删除源目录后需重新安装。
+安装完成后**重启 Pi** 使更改生效。
 
 ---
 
-### 方式 C：Git 仓库安装
+### 方式 B：Git 仓库安装
 
-当 pi-superpowers 发布到 GitHub 后，可直接从 Git 安装（Pi 自动克隆并 `npm install`）：
+直接从 GitHub 安装（Pi 自动克隆）：
 
 ```bash
 # HTTPS（推荐，无需 SSH key）
@@ -114,17 +88,52 @@ Pi 会将仓库克隆到 `~/.pi/agent/git/github.com/weiping/pi-superpowers/`，
 
 ---
 
-### 方式 D：临时加载（不写入配置）
+### 方式 C：提示词自动安装
+
+在已启动的 Pi 会话中粘贴以下提示词，Pi 会自动完成安装：
+
+```
+Run: pi install npm:@weiping/pi-superpowers, then tell me the install is complete and I need to restart Pi.
+```
+
+或从 GitHub 安装：
+
+```
+Clone https://github.com/weiping/pi-superpowers to ~/.pi/packages/pi-superpowers with depth 1, run pi install ~/.pi/packages/pi-superpowers, then tell me the install is complete and I need to restart Pi.
+```
+
+> 💡 **原理**：Pi 的 AI 会将提示词翻译为 `bash` 工具调用，依次执行安装命令，与 superpowers 在 OpenCode/Codex 上的一键安装机制完全一致。
+
+安装完成后**重启 Pi**（退出并重启）使更改生效。
+
+---
+
+### 方式 D：本地路径安装
+
+将本机目录中的 pi-superpowers 注册到 Pi 配置（适合开发或已有本地副本）：
+
+```bash
+# 全局安装（所有项目可用）
+pi install /path/to/pi-superpowers
+
+# 或项目级安装（仅当前项目生效，写入 .pi/settings.json）
+pi install -l /path/to/pi-superpowers
+```
+
+> ⚠️ 本地路径安装是**引用而非复制**。移动或删除源目录后需重新安装。
+
+---
+
+### 方式 E：临时加载（不写入配置）
 
 试用或调试时，用 `-e` 标志仅为**本次运行**加载，不修改任何配置文件：
 
 ```bash
-# 临时加载扩展（仅本次 Pi 运行有效）
-pi -e /Users/liuweiping/repos/pi-superpowers/extensions/bootstrap.ts
+# 临时加载 npm 包（仅本次 Pi 运行有效）
+pi -e npm:@weiping/pi-superpowers
 
-# 同时指定技能目录（完整临时体验）
-pi -e /Users/liuweiping/repos/pi-superpowers/extensions/bootstrap.ts \
-   --skill /Users/liuweiping/repos/pi-superpowers/skills
+# 或临时加载本地路径
+pi -e /path/to/pi-superpowers/extensions/bootstrap.ts
 ```
 
 ---
@@ -309,16 +318,21 @@ Pi 启动时应显示通知：
 ## 卸载
 
 ```bash
-# 全局卸载
-pi remove /Users/liuweiping/repos/pi-superpowers
+# npm 安装的卸载
+pi remove npm:@weiping/pi-superpowers
 
 # 项目级卸载（从 .pi/settings.json 移除）
-pi remove -l /Users/liuweiping/repos/pi-superpowers
+pi remove -l npm:@weiping/pi-superpowers
 ```
 
 若通过 Git 安装：
 ```bash
 pi remove https://github.com/weiping/pi-superpowers
+```
+
+若通过本地路径安装：
+```bash
+pi remove /path/to/pi-superpowers
 ```
 
 ---
@@ -332,17 +346,17 @@ pi remove https://github.com/weiping/pi-superpowers
 **排查**：
 
 ```bash
-# 确认 skills 目录存在且包含 SKILL.md 文件
-ls /Users/liuweiping/repos/pi-superpowers/skills/*/SKILL.md
+# 确认 Pi 已识别包
+pi list
 
-# 确认 package.json 中声明了 skills 路径
-cat /Users/liuweiping/repos/pi-superpowers/package.json | grep -A5 '"pi"'
+# 若通过本地路径安装，确认 skills 目录存在
+ls /path/to/pi-superpowers/skills/*/SKILL.md
 ```
 
-**修复**：重新安装并确认路径无误：
+**修复**：重新安装：
 ```bash
-pi remove /Users/liuweiping/repos/pi-superpowers
-pi install /Users/liuweiping/repos/pi-superpowers
+pi remove npm:@weiping/pi-superpowers
+pi install npm:@weiping/pi-superpowers
 ```
 
 ---
@@ -373,7 +387,7 @@ pi list
 
 ```bash
 # 临时方式验证扩展是否能加载
-pi -e /Users/liuweiping/repos/pi-superpowers/extensions/bootstrap.ts
+pi -e npm:@weiping/pi-superpowers
 ```
 
 在 Pi 中通过 `/settings` 查看已安装的包和已启用的扩展列表。
@@ -414,7 +428,7 @@ npm test
 ```json
 {
   "packages": [
-    "https://github.com/weiping/pi-superpowers@v1.0.0"
+    "npm:@weiping/pi-superpowers@1.0.0"
   ]
 }
 ```
