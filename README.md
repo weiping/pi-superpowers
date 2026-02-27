@@ -260,7 +260,7 @@ AI 在本次响应中遵循 using-superpowers 规则
 **在线安装（从 GitHub）：**
 
 ```
-Fetch and follow the installation instructions from https://raw.githubusercontent.com/your-org/pi-superpowers/main/.pi/INSTALL.md
+Fetch and follow the installation instructions from https://raw.githubusercontent.com/weiping/pi-superpowers/main/.pi/INSTALL.md
 ```
 
 **离线安装（使用本地副本）：**
@@ -272,7 +272,7 @@ Read and follow the installation instructions in /Users/liuweiping/repos/pi-supe
 **极速内联提示（单行命令版）：**
 
 ```
-Clone https://github.com/your-org/pi-superpowers to ~/.pi/packages/pi-superpowers with depth 1, run pi install ~/.pi/packages/pi-superpowers, then tell me the install is complete and I need to restart Pi.
+Clone https://github.com/weiping/pi-superpowers to ~/.pi/packages/pi-superpowers with depth 1, run pi install ~/.pi/packages/pi-superpowers, then tell me the install is complete and I need to restart Pi.
 ```
 
 粘贴任意一行后，Pi 会自动执行 `git clone` + `pi install` + 验证，并提示重启。
@@ -286,7 +286,7 @@ Clone https://github.com/your-org/pi-superpowers to ~/.pi/packages/pi-superpower
 pi install /Users/liuweiping/repos/pi-superpowers
 
 # 从 Git 安装
-pi install https://github.com/your-org/pi-superpowers
+pi install https://github.com/weiping/pi-superpowers
 
 # 项目级安装（仅当前项目，可提交给团队共享）
 pi install -l /Users/liuweiping/repos/pi-superpowers

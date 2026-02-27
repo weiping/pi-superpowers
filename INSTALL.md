@@ -53,7 +53,7 @@
 #### 在线安装（从 GitHub 克隆）
 
 ```
-Fetch and follow the installation instructions from https://raw.githubusercontent.com/your-org/pi-superpowers/main/.pi/INSTALL.md
+Fetch and follow the installation instructions from https://raw.githubusercontent.com/weiping/pi-superpowers/main/.pi/INSTALL.md
 ```
 
 Pi 会用 `curl`/`bash` 工具获取 `.pi/INSTALL.md` 中的指令，然后逐步执行。
@@ -67,7 +67,7 @@ Read and follow the installation instructions in /Users/liuweiping/repos/pi-supe
 #### 极速内联提示（无需网络，无需 INSTALL.md 文件）
 
 ```
-Clone https://github.com/your-org/pi-superpowers to ~/.pi/packages/pi-superpowers with depth 1, run pi install ~/.pi/packages/pi-superpowers, then tell me the install is complete and I need to restart Pi.
+Clone https://github.com/weiping/pi-superpowers to ~/.pi/packages/pi-superpowers with depth 1, run pi install ~/.pi/packages/pi-superpowers, then tell me the install is complete and I need to restart Pi.
 ```
 
 > 💡 **原理**：Pi 的 AI 会将提示词翻译为 `bash` 工具调用，依次执行 `git clone` 和 `pi install`，与 superpowers 在 OpenCode/Codex 上的一键安装机制完全一致。
@@ -98,19 +98,19 @@ pi install -l /Users/liuweiping/repos/pi-superpowers
 
 ```bash
 # HTTPS（推荐，无需 SSH key）
-pi install https://github.com/your-org/pi-superpowers
+pi install https://github.com/weiping/pi-superpowers
 
 # 锁定到指定版本标签（锁定后 pi update 不会自动升级）
-pi install https://github.com/your-org/pi-superpowers@v1.0.0
+pi install https://github.com/weiping/pi-superpowers@v1.0.0
 
 # git: 短格式
-pi install git:github.com/your-org/pi-superpowers
+pi install git:github.com/weiping/pi-superpowers
 
 # SSH（需要配置 SSH key）
-pi install git:git@github.com:your-org/pi-superpowers
+pi install git:git@github.com:weiping/pi-superpowers
 ```
 
-Pi 会将仓库克隆到 `~/.pi/agent/git/github.com/your-org/pi-superpowers/`，并自动运行 `npm install`。
+Pi 会将仓库克隆到 `~/.pi/agent/git/github.com/weiping/pi-superpowers/`，并自动运行 `npm install`。
 
 ---
 
@@ -318,7 +318,7 @@ pi remove -l /Users/liuweiping/repos/pi-superpowers
 
 若通过 Git 安装：
 ```bash
-pi remove https://github.com/your-org/pi-superpowers
+pi remove https://github.com/weiping/pi-superpowers
 ```
 
 ---
@@ -414,7 +414,7 @@ npm test
 ```json
 {
   "packages": [
-    "https://github.com/your-org/pi-superpowers@v1.0.0"
+    "https://github.com/weiping/pi-superpowers@v1.0.0"
   ]
 }
 ```
