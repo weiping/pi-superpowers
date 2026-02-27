@@ -54,6 +54,7 @@ export default function (pi: ExtensionAPI) {
       const roleLabel = params.role ?? "agent";
       onUpdate?.({
         content: [{ type: "text", text: `Dispatching ${roleLabel}...` }],
+        details: undefined,
       });
 
       try {

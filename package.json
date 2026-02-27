@@ -6,16 +6,36 @@
   "author": "Ported from obra/superpowers",
   "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/weiping/pi-superpowers.git"
+  },
+  "homepage": "https://github.com/weiping/pi-superpowers#readme",
+  "bugs": {
+    "url": "https://github.com/weiping/pi-superpowers/issues"
+  },
+  "files": [
+    "extensions/**/*.ts",
+    "skills/**/*.md",
+    "prompts/**/*.md",
+    "README.md",
+    "INSTALL.md",
+    "package.json"
+  ],
   "pi": {
     "extensions": ["./extensions/bootstrap.ts", "./extensions/subagent.ts"],
     "skills": ["./skills"],
     "prompts": ["./prompts"]
   },
   "scripts": {
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build && npm test"
   },
   "devDependencies": {
+    "typescript": "^5.0.0",
     "vitest": "^2.0.0"
   },
   "peerDependencies": {
